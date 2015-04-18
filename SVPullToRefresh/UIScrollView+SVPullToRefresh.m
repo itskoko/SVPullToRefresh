@@ -322,7 +322,15 @@ static char UIScrollViewPullToRefreshView;
                                       (self.bounds.size.height / 2) - (self.arrow.bounds.size.height / 2),
                                       self.arrow.bounds.size.width,
                                       self.arrow.bounds.size.height);
-        self.activityIndicatorView.center = self.arrow.center;
+
+        if(self.titleLabel.text.length > 0) {
+          self.activityIndicatorView.center = self.arrow.center;
+        }
+        else {
+          CGRect activityFrame = self.arrow.frame;
+          activityFrame.origin.x = roundf(self.bounds.size.width/2);
+          self.activityIndicatorView.frame = activityFrame;
+        }
     }
 }
 
